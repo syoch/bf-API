@@ -1,0 +1,9 @@
+{
+  "saveAndRun": {
+    "commands": [
+      {
+        "cmd": "python3 -m s2bf 'Hello, World! I\\'m syoch'"
+      }
+    ]
+  }
+}
