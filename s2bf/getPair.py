@@ -15,7 +15,13 @@ class Pair():
 
         da, a = getPair(self.a).get("+")
         db, b = getPair(self.b).get(ch)
-        o = ch*self.offs
+        o = (
+            "-" if (
+                -1 if ch == "-"
+                else +1
+            ) * self.offs < 0
+            else "+"
+        )*abs(self.offs)
         return max(da, db)+1, f"{a}[<{b}>-]<{o}>"
 
     def getscore(self) -> int:
