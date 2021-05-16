@@ -28,4 +28,8 @@ def getPair(val: int):
                 minscore = pair.get()
                 minpair.a = pair.a
                 minpair.b = pair.b
+    if abs(minpair.a-minpair.b)+minpair.get() > val:
+        minpair = getPair(val-1)
+        minpair.offs += 1
+
     return minpair
