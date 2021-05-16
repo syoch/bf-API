@@ -20,11 +20,11 @@ class Pair():
 
     def getscore(self) -> int:
         if self.a == 1:
-            return self.b+self.offs
+            return self.b+abs(self.offs)
         if self.b == 1:
-            return self.a+self.offs
+            return self.a+abs(self.offs)
 
-        return self.a+self.b+7+self.offs
+        return self.a+self.b+7+abs(self.offs)
 
 
 def _getPair(val: int) -> Pair:
