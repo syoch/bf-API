@@ -27,7 +27,7 @@ class Pair():
         return self.a+self.b+7+self.offs
 
 
-def _getPair(val: int):
+def _getPair(val: int) -> Pair:
     pair = Pair(1, val)
     minscore = val**4
     minpair = Pair(1, 1)
