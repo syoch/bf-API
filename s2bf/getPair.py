@@ -34,7 +34,7 @@ def getPair(val: int):
     for i in range(1, int(val**.5)+1):
         if val % i == 0:
             pair.a = i
-            pair.b = val/i
+            pair.b = val//i
             if pair.getscore() < minscore:
                 minscore = pair.getscore()
                 minpair.a = pair.a
