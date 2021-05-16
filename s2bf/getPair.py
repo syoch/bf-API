@@ -7,7 +7,7 @@ class Pair():
     def __str__(self) -> str:
         return f"({self.a}*{self.b}+{self.offs})"
 
-    def get(self):
+    def getscore(self):
         if self.a == 1:
             return self.b+self.offs
         if self.b == 1:
@@ -24,11 +24,11 @@ def getPair(val: int):
         if val % i == 0:
             pair.a = i
             pair.b = val/i
-            if pair.get() < minscore:
-                minscore = pair.get()
+            if pair.getscore() < minscore:
+                minscore = pair.getscore()
                 minpair.a = pair.a
                 minpair.b = pair.b
-    if abs(minpair.a-minpair.b)+minpair.get() > val:
+    if abs(minpair.a-minpair.b)+minpair.getscore() > val:
         minpair = getPair(val-1)
         minpair.offs += 1
 
