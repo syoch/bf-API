@@ -1,13 +1,13 @@
 class Pair():
     def __init__(self, a: int, b: int):
-        self.a = a
-        self.b = b
-        self.offs = 0
+        self.a: int = a
+        self.b: int = b
+        self.offs: int = 0
 
     def __str__(self) -> str:
         return f"({self.a}*{self.b}+{self.offs})"
 
-    def get(self, ch="+"):
+    def get(self, ch="+") -> str:
         if self.a == 1:
             return 0, ch*(self.b+self.offs)
         if self.b == 1:
@@ -18,7 +18,7 @@ class Pair():
         o = ch*self.offs
         return max(da, db)+1, f"{a}[<{b}>-]<{o}>"
 
-    def getscore(self):
+    def getscore(self) -> int:
         if self.a == 1:
             return self.b+self.offs
         if self.b == 1:
