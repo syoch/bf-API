@@ -7,6 +7,17 @@ class Pair():
     def __str__(self) -> str:
         return f"({self.a}*{self.b}+{self.offs})"
 
+    def get(self, ch="+"):
+        if self.a == 1:
+            return ch*(self.b+self.offs)
+        if self.b == 1:
+            return ch*(self.a+self.offs)
+
+        a = getPair(self.a).get()
+        b = getPair(self.b).get()
+        o = ch*self.offs
+        return f"{a}[<{b}>-]<{o}>"
+
     def getscore(self):
         if self.a == 1:
             return self.b+self.offs
