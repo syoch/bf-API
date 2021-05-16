@@ -1,4 +1,7 @@
-from . import diffArray, pairGet
+from . import diffArray, pairGet, getPair
 import sys
 src = sys.argv[1]
-print(pairGet.get(255))
+out = ""
+for diff in diffArray.diffArray(src):
+    out += pairGet.get(diff)+"."
+print(out)
