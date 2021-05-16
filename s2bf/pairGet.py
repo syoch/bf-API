@@ -4,7 +4,8 @@ from . import getPair
 def get(val: int):
     if val == 0:
         return ""
-    elif val < 0:
+
+    if val < 0:
         d, p = getPair.getPair(-val).get("-")
     else:
         d, p = getPair.getPair(val).get()
