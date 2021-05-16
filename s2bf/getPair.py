@@ -13,8 +13,8 @@ class Pair():
         if self.b == 1:
             return 0, ch*(self.a+self.offs)
 
-        da, a = getPair(self.a).get()
-        db, b = getPair(self.b).get()
+        da, a = getPair(self.a).get(ch)
+        db, b = getPair(self.b).get(ch)
         o = ch*self.offs
         return max(da, db)+1, f"{a}[<{b}>-]<{o}>"
 
