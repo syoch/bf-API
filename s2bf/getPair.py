@@ -52,7 +52,7 @@ def getPair(val: int):
     pair = Pair(1, val)
     minscore = val**4
     minpair = Pair(1, 1)
-    for i in range(-val, val, 2):
+    for i in range(-val, val, 1):
         pair = _getPair(val-i)
         pair.offs = i
         if pair.getscore() < minscore:
