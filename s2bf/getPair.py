@@ -37,8 +37,7 @@ def _getPair(val: int) -> Pair:
             pair.b = val//i
             if pair.getscore() < minscore:
                 minscore = pair.getscore()
-                minpair.a = pair.a
-                minpair.b = pair.b
+                minpair = pair
 
     return minpair
 
