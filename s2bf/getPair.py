@@ -9,14 +9,14 @@ class Pair():
 
     def get(self, ch="+"):
         if self.a == 1:
-            return ch*(self.b+self.offs)
+            return 0, ch*(self.b+self.offs)
         if self.b == 1:
-            return ch*(self.a+self.offs)
+            return 0, ch*(self.a+self.offs)
 
-        a = getPair(self.a).get()
-        b = getPair(self.b).get()
+        da, a = getPair(self.a).get()
+        db, b = getPair(self.b).get()
         o = ch*self.offs
-        return f"{a}[<{b}>-]<{o}>"
+        return max(da, db)+1, f"{a}[<{b}>-]<{o}>"
 
     def getscore(self):
         if self.a == 1:
