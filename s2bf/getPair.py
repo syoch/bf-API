@@ -47,7 +47,7 @@ def getPair(val: int):
     minscore = val**4
     minpair = Pair(1, 1)
     for i in range(-val, val, 2):
-        pair = _getPair(val+i)
+        pair = _getPair(val-i)
         pair.offs = i
         if pair.getscore() < minscore:
             minscore = pair.getscore()
