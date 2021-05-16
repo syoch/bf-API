@@ -39,7 +39,7 @@ def getPair(val: int):
                 minscore = pair.getscore()
                 minpair.a = pair.a
                 minpair.b = pair.b
-    if abs(minpair.a-minpair.b)+minpair.getscore() > val:
+    if abs(minpair.a-minpair.b)+minpair.getscore() > 20:
         minpair = getPair(val-1)
         minpair.offs += 1
 
