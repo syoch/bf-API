@@ -13,7 +13,8 @@ class PairInt():
 
     def get(self, ch) -> str:
         s = (-1 if ch == "-" else 1)
-        return 0, ("-" if s*self.num < 0 else "+")*abs(self.num)
+        num = int(self.num)
+        return 0, ("-" if s*num < 0 else "+")*abs(num)
 
 
 class Pair():
