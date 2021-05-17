@@ -1,3 +1,4 @@
+from _typeshed import NoneType
 from typing import Any, Tuple
 
 
@@ -25,3 +26,7 @@ class parser():
             return True, ch
         else:
             return False, None
+
+    def except(self, ch: str) -> NoneType:
+        if self.consume(ch)[0] == False:
+            raise Exception(f"excepted {ch}")
