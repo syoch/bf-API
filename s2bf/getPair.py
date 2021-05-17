@@ -31,8 +31,8 @@ class Pair():
         if self.b == 1:
             return 0, ch*(self.a+self.offs)
 
-        da, a = getPair(self.a).get("+")
-        db, b = getPair(self.b).get(ch)
+        da, a = self.a.get("+")
+        db, b = self.b.get(ch)
         o = (
             "-" if (
                 -1 if ch == "-"
