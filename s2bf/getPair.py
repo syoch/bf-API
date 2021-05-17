@@ -8,6 +8,9 @@ class PairInt():
     def __int__(self) -> int:
         return int(self.num)
 
+    def __str__(self) -> str:
+        return str(self.num)
+
 
 class Pair():
     def __init__(self, a: int, b: int):
