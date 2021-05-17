@@ -5,6 +5,9 @@ class PairInt():
     def getscore(self):
         return self.num
 
+    def __int__(self) -> int:
+        return int(self.num)
+
 
 class Pair():
     def __init__(self, a: int, b: int):
