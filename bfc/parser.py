@@ -37,6 +37,7 @@ class parser():
         while self.peek() != "]":
             stmts += self.stmt()
         self.except("[")
+        return stmts
 
     def stmt(self):
         while self.peek() not in "+-<>.,":
