@@ -46,6 +46,9 @@ class Pair():
 
         return self.a.getscore()+self.b.getscore()+7+abs(self.offs)
 
+    def __int__(self) -> int:
+        return self.getscore()
+
 
 def _getPair(val: int) -> Pair:
     pair = Pair(1, val)
