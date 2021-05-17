@@ -78,15 +78,13 @@ def getPair(val: int):
     if type(val) == PairInt:
         val = int(val)
     pair = Pair(1, val)
-    minscore = val**4
-    minpair = Pair(1, 1)
+    minpair = Pair(1, val)
     for i in range(-val, val, 1):
         pair = _getPair(val-i)
         pair.offs = i
 
-        print(pair.getscore(), minscore)
-        if pair.getscore() < minscore:
-            minscore = pair.getscore()
+        if pair.getscore() < minpair.getscore():
             minpair = pair
     pair = minpair
+
     return pair
