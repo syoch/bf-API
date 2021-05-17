@@ -54,6 +54,8 @@ class Pair():
 
 
 def _getPair(val: int) -> Pair:
+    if type(val) == PairInt:
+        val = int(val)
     pair = Pair(1, val)
     minscore = val**4
     minpair = Pair(1, 1)
@@ -70,6 +72,8 @@ def _getPair(val: int) -> Pair:
 
 
 def getPair(val: int):
+    if type(val) == PairInt:
+        val = int(val)
     pair = Pair(1, val)
     minscore = val**4
     minpair = Pair(1, 1)
