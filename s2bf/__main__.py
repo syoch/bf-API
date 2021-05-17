@@ -22,7 +22,7 @@ for ind, _ch in enumerate(arr):
     else:
         out += pairGet.get(_ch-prev)
         out += "."
-        if ch in duplicates:
+        if ch != nex and ch in duplicates:
             out += "[>+>+<<-]>>[<<+>>-]<"
             table[ch] = ptr
             ptr += 1
