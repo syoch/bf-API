@@ -1,3 +1,11 @@
+class PairInt():
+    def __init__(self, num: int):
+        self.num = num
+
+    def getscore(self):
+        return self.num
+
+
 class Pair():
     def __init__(self, a: int, b: int):
         self.a: int = a
@@ -23,6 +31,12 @@ class Pair():
             else "+"
         )*abs(self.offs)
         return max(da, db)+1, f"{a}[<{b}>-]<{o}>"
+
+    def adjust(self) -> None:
+        if type(self.a) == int:
+            self.a = PairInt(self.a)
+        if type(self.b) == int:
+            self.b = PairInt(self.b)
 
     def getscore(self) -> int:
         if self.a == 1:
