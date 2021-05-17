@@ -33,9 +33,9 @@ class Pair():
         return max(da, db)+1, f"{a}[<{b}>-]<{o}>"
 
     def adjust(self) -> None:
-        if type(self.a) == int:
+        if type(self.a) != Pair:
             self.a = PairInt(self.a)
-        if type(self.b) == int:
+        if type(self.b) != Pair:
             self.b = PairInt(self.b)
 
     def getscore(self) -> int:
@@ -55,6 +55,7 @@ def _getPair(val: int) -> Pair:
         if val % i == 0:
             pair.a = i
             pair.b = val//i
+            pair.adjust()
             if pair.getscore() < minscore:
                 minscore = pair.getscore()
                 minpair = pair
@@ -69,6 +70,7 @@ def getPair(val: int):
     for i in range(-val, val, 1):
         pair = _getPair(val-i)
         pair.offs = i
+
         print(pair.getscore(), minscore)
         if pair.getscore() < minscore:
             minscore = pair.getscore()
