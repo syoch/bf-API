@@ -1,7 +1,8 @@
+from typing import Mapping
 from . import diffArray
 
 
-def get(src: str):
+def get(src: str) -> Mapping[int, int]:
     asciiList = diffArray.asciiArray(src)
     _table = {}
     prev = 0
