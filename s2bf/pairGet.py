@@ -8,7 +8,9 @@ def get(val: int):
 
     sign = np.sign(val)
 
-    d, p = getPair.getPair(sign*val).get(
+    pair = getPair.getPair(sign*val)
+    pair.adjust()
+    d, p = pair.get(
         "-" if sign == -1 else "+"
     )
     return ">"*d+p+"<"*d
