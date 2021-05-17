@@ -7,4 +7,4 @@ def asciiArray(src: str):
 
 def diffArray(src: str):
     ascArr = asciiArray(src)
-    return [ascArr[0], *np.diff(ascArr)]
+    return ascArr, [ascArr[0], *np.diff(ascArr)]
