@@ -34,13 +34,8 @@ class Pair():
 
         da, a = self.a.get("+")
         db, b = self.b.get(ch)
-        o = (
-            "-" if (
-                -1 if ch == "-"
-                else +1
-            ) * self.offs < 0
-            else "+"
-        )*abs(self.offs)
+        sign_ch = -1 if ch == "-" else 1
+        o = ("-" if sign_ch * self.offs < 0 else "+")*abs(self.offs)
         return max(da, db)+1, f"{a}[<{b}>-]<{o}>"
 
     def adjust(self) -> None:
