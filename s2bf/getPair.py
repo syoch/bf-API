@@ -30,7 +30,7 @@ class Pair():
         if self.b == 1:
             return self.a+abs(self.offs)
 
-        return self.a+self.b+7+abs(self.offs)
+        return self.a.getscore()+self.b.getscore()+7+abs(self.offs)
 
 
 def _getPair(val: int) -> Pair:
@@ -55,6 +55,7 @@ def getPair(val: int):
     for i in range(-val, val, 1):
         pair = _getPair(val-i)
         pair.offs = i
+        print(pair.getscore(), minscore)
         if pair.getscore() < minscore:
             minscore = pair.getscore()
             minpair = pair
