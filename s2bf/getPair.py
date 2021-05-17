@@ -85,4 +85,5 @@ def getPair(val: int):
         if pair.getscore() < minscore:
             minscore = pair.getscore()
             minpair = pair
-    return minpair
+    pair = minpair
+    return pair
