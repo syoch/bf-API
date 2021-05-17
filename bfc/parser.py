@@ -1,3 +1,6 @@
+from typing import Any, Tuple
+
+
 class parser():
     def __init__(self):
         self.src = ""
@@ -15,3 +18,10 @@ class parser():
             return None
         else:
             return self.src[self.index]
+
+    def consume(self, ch: str) -> Tuple[bool, Any]:
+        if self.peek() == ch:
+            self.index += 1
+            return True, ch
+        else:
+            return False, None
