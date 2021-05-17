@@ -65,16 +65,15 @@ def _getPair(val: int) -> Pair:
     if type(val) == PairInt:
         val = int(val)
     pair = Pair(1, val)
-    minscore = val**4
-    minpair = Pair(1, 1)
+    minpair = Pair(1, val)
     for i in range(1, int(val**.5)+1):
         if val % i == 0:
             pair.a = i
             pair.b = val//i
             pair.adjust()
-            if pair.getscore() < minscore:
-                minscore = pair.getscore()
+            if pair.getscore() < minpair.getscore():
                 minpair = pair
+    pair = minpair
 
     return minpair
 
