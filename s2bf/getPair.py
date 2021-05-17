@@ -40,9 +40,9 @@ class Pair():
 
     def getscore(self) -> int:
         if self.a == 1:
-            return self.b+abs(self.offs)
+            return int(self.b)+abs(self.offs)
         if self.b == 1:
-            return self.a+abs(self.offs)
+            return int(self.a)+abs(self.offs)
 
         return self.a.getscore()+self.b.getscore()+7+abs(self.offs)
 
