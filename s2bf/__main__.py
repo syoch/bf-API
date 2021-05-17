@@ -7,7 +7,7 @@ duplicates = getDuplicate(src)
 table = {}
 ptr = 0
 prev = 0
-for (_ch, _) in zip(*diffArray.diffArray(src)):
+for _ch in diffArray.asciiArray(src):
     ch = chr(_ch)
     if ch in table:  # use shotcut
         off = table[ch]-ptr
