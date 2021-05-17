@@ -91,5 +91,13 @@ def getPair(val: int):
         if pair.getscore() < minpair.getscore():
             minpair = pair
     pair = minpair
-
+    if int(pair.a) != 1 and int(pair.b) != 1:
+        if type(pair.a) != Pair and int(pair.a) >= 10:
+            test = getPair(int(pair.a))
+            if test.getscore() < pair.a.getscore():
+                pair.a = test
+        if type(pair.b) != Pair and int(pair.b) >= 10:
+            test = getPair(int(pair.b))
+            if test.getscore() < pair.b.getscore():
+                pair.b = test
     return pair
