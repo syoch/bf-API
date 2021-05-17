@@ -5,7 +5,22 @@ src = sys.argv[1]
 out = ""
 duplicates = getDuplicate(src)
 table = {}
-for (ch, diff) in zip(*diffArray.diffArray(src)):
-    print(ch, diff)
-    out += pairGet.get(diff)+"."
+ptr = 0
+prev = 0
+for (_ch, _) in zip(*diffArray.diffArray(src)):
+    ch = chr(_ch)
+    if ch in table:  # use shotcut
+        off = table[ch]-ptr
+        out += ("<" if off < 0 else ">")*abs(off)
+        out += "."
+        out += (">" if off < 0 else "<")*abs(off)
+    else:
+        out += pairGet.get(_ch-prev)
+        out += "."
+        if ch in duplicates:
+            out += "[>+>+<<-]>>[<<+>>-]<"
+            table[ch] = ptr
+            ptr += 1
+        prev = _ch
+# print(table)
 print(remover.auto(out))
