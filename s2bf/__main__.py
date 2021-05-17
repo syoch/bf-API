@@ -8,6 +8,12 @@ table = {}
 ptr = 0
 prev = 0
 arr = diffArray.asciiArray(src)
+
+
+def goto(offset: int):
+    return ("<" if offset < 0 else ">")*abs(offset)
+
+
 for ind, _ch in enumerate(arr):
     if ind == len(arr)-1:
         nex = None
@@ -16,9 +22,9 @@ for ind, _ch in enumerate(arr):
     ch = chr(_ch)
     if ch in table:  # use shotcut
         off = table[ch]-ptr
-        out += ("<" if off < 0 else ">")*abs(off)
+        out += goto(off)
         out += "."
-        out += (">" if off < 0 else "<")*abs(off)
+        out += goto(-off)
     else:
         out += pairGet.get(_ch-prev)
         out += "."
