@@ -9,3 +9,4 @@ def get(src: str):
         if asc+1 in asciiList or asc-1 in asciiList:
             _table[prev] = asc
         prev = asc
+    return _table
