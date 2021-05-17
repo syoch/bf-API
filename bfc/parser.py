@@ -37,3 +37,8 @@ class parser():
         while self.peek() != "]":
             stmts += self.next()
         self.except("[")
+
+    def stmt(self):
+        while self.peek() not in "+-<>.,":
+            self.index += 1
+        return self.next()
