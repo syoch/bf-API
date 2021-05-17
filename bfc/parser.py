@@ -30,3 +30,10 @@ class parser():
     def except(self, ch: str) -> NoneType:
         if self.consume(ch)[0] == False:
             raise Exception(f"excepted {ch}")
+
+    def loop(self):
+        stmts = ""
+        self.except("[")
+        while self.peek() != "]":
+            stmts += self.next()
+        self.except("[")
