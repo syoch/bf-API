@@ -14,7 +14,8 @@ def compile(src: str) -> List[str]:
 def main():
     import sys
     src = sys.argv[1]
-    print(compile(src))
+    for line in compile(src):
+        print(line)
 
 
 if __name__ == "__main__":
