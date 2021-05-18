@@ -26,8 +26,16 @@ def pushPop(src: List[str]) -> List[str]:
 
 def inc(src: List[str]) -> List[str]:
     ret = []
+    inc = 0
     for line in src:
-        ret.append(line)
+        if line == "inc":
+            print(line, inc)
+            inc += 1
+        else:
+            if inc != 0:
+                ret.append("add["+str(inc)+"]")
+                inc = 0
+            ret.append(line)
     return ret
 
 
