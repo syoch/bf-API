@@ -24,7 +24,15 @@ def pushPop(src: List[str]) -> List[str]:
     return ret
 
 
+def inc(src: List[str]) -> List[str]:
+    ret = []
+    for line in src:
+        ret.append(line)
+    return ret
+
+
 def auto(src: List[str]) -> List[str]:
     ret = src
     ret = pushPop(src)
+    ret = inc(src)
     return ret
