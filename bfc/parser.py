@@ -34,17 +34,16 @@ class parser():
             raise Exception(f"Excepted {ch}")
 
     def loop(self):
-        stmts = ""
+        stmts = []
         self.Except("[")
         while self.peek() != "]":
-            stmts += self.stmt()
+            stmts.append(self.stmt())
         self.Except("]")
         return stmts
 
     def stmt(self):
-        while self.peek() not in "+-<>.,":
-            self.index += 1
-        if self.next() == "[":
+        ch = self.peek()
+        if ch == "[":
             return self.loop()
         else:
             return self.next()
