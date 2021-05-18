@@ -39,6 +39,7 @@ class parser():
         while self.peek() != "]":
             stmts.append(self.stmt())
         self.Except("]")
+        stmts = stmts[:-1]  # remove last (']')
         return stmts
 
     def stmt(self):
