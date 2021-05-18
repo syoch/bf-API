@@ -1,8 +1,8 @@
 from typing import List
 
 
-def auto(src: List[str]) -> List[str]:
-    dest = []
+def dest(src: List[str]) -> List[str]:
+    ret = []
     nex = ""
     skip = 0
     for i in range(len(src)):
@@ -20,5 +20,11 @@ def auto(src: List[str]) -> List[str]:
             skip = 1
             pass
         else:
-            dest.append(line)
-    return dest
+            ret.append(line)
+    return ret
+
+
+def auto(src: List[str]) -> List[str]:
+    ret = src
+    ret = dest(src)
+    return ret
