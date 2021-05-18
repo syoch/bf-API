@@ -1,5 +1,5 @@
 from .asm import table
-
+from .label import getLabel
 
 def compile(ast):
     instructions = []
