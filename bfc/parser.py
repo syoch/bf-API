@@ -47,7 +47,8 @@ class parser():
         if ch == "[":
             return self.loop()
         else:
-            return self.next()
+            self.index += 1
+            return ch
 
     def parse(self):
         stmts = []
