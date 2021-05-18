@@ -1,7 +1,7 @@
 from typing import List
 
 
-def dest(src: List[str]) -> List[str]:
+def pushPop(src: List[str]) -> List[str]:
     ret = []
     nex = ""
     skip = 0
@@ -26,5 +26,5 @@ def dest(src: List[str]) -> List[str]:
 
 def auto(src: List[str]) -> List[str]:
     ret = src
-    ret = dest(src)
+    ret = pushPop(src)
     return ret
