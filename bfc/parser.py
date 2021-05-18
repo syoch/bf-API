@@ -1,4 +1,3 @@
-from _typeshed import NoneType
 from typing import Any, Tuple
 
 
@@ -27,16 +26,16 @@ class parser():
         else:
             return False, None
 
-    def except(self, ch: str) -> NoneType:
+    def Except(self, ch: str) -> None:
         if self.consume(ch)[0] == False:
-            raise Exception(f"excepted {ch}")
+            raise Exception(f"Excepted {ch}")
 
     def loop(self):
         stmts = ""
-        self.except("[")
+        self.Except("[")
         while self.peek() != "]":
             stmts += self.stmt()
-        self.except("[")
+        self.Except("[")
         return stmts
 
     def stmt(self):
