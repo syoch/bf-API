@@ -1,4 +1,4 @@
-from .table import table
+from .platform import table
 from typing import List
 
 
