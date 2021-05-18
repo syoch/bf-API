@@ -32,7 +32,7 @@ def inc(src: List[str]) -> List[str]:
             inc += 1
         else:
             if inc != 0:
-                ret.append("add["+str(inc)+"]")
+                ret.append(f"add {inc}")
                 inc = 0
             ret.append(line)
     return ret
