@@ -13,17 +13,14 @@ class parser():
             return True
 
     def peek(self):
-        if len(self.src) <= self.index:
-            return None
-        else:
+        if self.hasData():
             return self.src[self.index]
+        else:
+            return None
 
     def next(self):
         self.index += 1
-        if len(self.src) <= self.index:
-            return None
-        else:
-            return self.src[self.index]
+        return self.peek()
 
     def consume(self, ch: str) -> Tuple[bool, Any]:
         if self.peek() == ch:
