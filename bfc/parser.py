@@ -42,7 +42,10 @@ class parser():
     def stmt(self):
         while self.peek() not in "+-<>.,":
             self.index += 1
-        return self.next()
+        if self.next() == "[":
+            return self.loop()
+        else:
+            return self.next()
 
     def parse(self):
         stmts = []
