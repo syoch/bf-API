@@ -1,7 +1,21 @@
-from . import parser
-from . import compile
-from . import asm
-import sys
-src = sys.argv[1]
+from typing import List
+from .parser import parser
+from .compile import compile as pseudo
+from .asm import convert as platform
 
-print(asm.convert(compile.compile(parser.parser(src).parse())))
+
+def compile(src: str) -> List[str]:
+    ast = parser(src).parse()
+    pseudocode = pseudo(ast)
+    platformcode = platform(pseudocode)
+    return platformcode
+
+
+def main():
+    import sys
+    src = sys.argv[1]
+    print(compile(src))
+
+
+if __name__ == "__main__":
+    main()
