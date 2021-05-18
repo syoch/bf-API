@@ -12,15 +12,15 @@ class parser():
         else:
             return True
 
-    def peek(self):
+    def peek(self, none=None):
         if self.hasData():
             return self.src[self.index]
         else:
-            return None
+            return none
 
-    def next(self):
+    def next(self, none=None):
         self.index += 1
-        return self.peek()
+        return self.peek(none)
 
     def consume(self, ch: str) -> Tuple[bool, Any]:
         if self.peek() == ch:
