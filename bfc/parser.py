@@ -2,8 +2,8 @@ from typing import Any, Tuple
 
 
 class parser():
-    def __init__(self):
-        self.src = ""
+    def __init__(self, src):
+        self.src = src
         self.index = 0
 
     def peek(self):
