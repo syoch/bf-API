@@ -10,15 +10,15 @@ def compile(ast):
             instructions += compile(stmt)
             instructions += table["loop2"]
         if stmt == "+":
-            instructions += table["inc"]
+            instructions += ["pop", "inc", "push"]
         elif stmt == "-":
-            instructions += table["dec"]
+            instructions += ["pop", "dec", "push"]
         elif stmt == "<":
-            instructions += table["lef"]
+            instructions += ["ins"]
         elif stmt == ">":
-            instructions += table["rig"]
+            instructions += ["des"]
         elif stmt == ".":
-            instructions += table["put"]
+            instructions += ["put"]
         elif stmt == ",":
-            instructions += table["get"]
+            instructions += ["get"]
     return instructions
