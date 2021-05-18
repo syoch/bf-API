@@ -38,7 +38,7 @@ class parser():
         self.Except("[")
         while self.peek() != "]":
             stmts += self.stmt()
-        self.Except("[")
+        self.Except("]")
         return stmts
 
     def stmt(self):
