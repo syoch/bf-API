@@ -1,14 +1,16 @@
 from .asm import table
 from .label import getLabel
 
+
 def compile(ast):
     instructions = []
 
     for stmt in ast:
         if type(stmt) == list:
-            instructions += table["loop1"]
+            label = getLabel()
+            instructions += [f"{label}:"]
             instructions += compile(stmt)
-            instructions += table["loop2"]
+            instructions += ["pop", f"jnz {label}", "push"]
         if stmt == "+":
             instructions += ["pop", "inc", "push"]
         elif stmt == "-":
