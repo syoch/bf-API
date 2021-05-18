@@ -41,6 +41,6 @@ def inc(src: List[str]) -> List[str]:
 
 def auto(src: List[str]) -> List[str]:
     ret = src
-    ret = pushPop(src)
-    ret = inc(src)
+    ret = pushPop(ret)
+    ret = inc(ret)
     return ret
