@@ -43,3 +43,9 @@ class parser():
         while self.peek() not in "+-<>.,":
             self.index += 1
         return self.next()
+
+    def parse(self):
+        stmts = []
+        while self.hasData():
+            stmts.append(self.stmt())
+        return stmts
