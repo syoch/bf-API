@@ -29,7 +29,6 @@ def inc(src: List[str]) -> List[str]:
     inc = 0
     for line in src:
         if line == "inc":
-            print(line, inc)
             inc += 1
         else:
             if inc != 0:
