@@ -1,16 +1,22 @@
+from .asm import table
+
+
 def compile(ast):
+    instructions = []
+
     for stmt in ast:
         if type(stmt) == list:
             raise NotImplementedError()
         if stmt == "+":
-            print("inc")
+            instructions += table["inc"]
         elif stmt == "-":
-            print("dec")
+            instructions += table["dec"]
         elif stmt == "<":
-            print("lef")
+            instructions += table["lef"]
         elif stmt == ">":
-            print("rig")
+            instructions += table["rig"]
         elif stmt == ".":
-            print("put")
+            instructions += table["put"]
         elif stmt == ",":
-            print("get")
+            instructions += table["get"]
+    return instructions
