@@ -1,6 +1,6 @@
 from . import parser
+from . import compile
 import sys
 src = sys.argv[1]
 
-print(src)
-print(parser.parser(src).parse())
+print(compile.compile(parser.parser(src).parse()))
