@@ -6,6 +6,12 @@ class parser():
         self.src = src
         self.index = 0
 
+    def hasData(self):
+        if len(self.src) <= self.index:
+            return False
+        else:
+            return True
+
     def peek(self):
         if len(self.src) <= self.index:
             return None
