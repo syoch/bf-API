@@ -9,7 +9,7 @@ def compile(ast):
             label = getLabel()
             instructions += [f"{label}:"]
             instructions += compile(stmt)
-            instructions += ["pop", f"jnz {label}", "push"]
+            instructions += ["peek", f"jnz {label}"]
         if stmt == "+":
             instructions += ["pop", "inc", "push"]
         elif stmt == "-":
