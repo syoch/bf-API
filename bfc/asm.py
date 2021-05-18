@@ -20,5 +20,11 @@ table = {
     ],
     "get": [
 
+    ],
+    "loop1": [
+        "#begin"
+    ],
+    "loop2": [
+        "#end"
     ]
 }
