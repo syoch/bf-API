@@ -2,7 +2,8 @@
   "saveAndRun": {
     "commands": [
       {
-        "cmd": "python3 -m s2bf 'Hello, World! Im syoch'"
+        // "cmd": "python3 -m s2bf 'Hello, World! Im syoch'"
+        "cmd": "python3 -m bfc"
       }
     ]
   },

@@ -8,9 +8,6 @@ def get(val: int):
 
     sign = np.sign(val)
 
-    pair = getPair.getPair(sign*val)
-    pair.adjust()
-    d, p = pair.get(
-        "-" if sign == -1 else "+"
-    )
-    return ">"*d+p+"<"*d
+    pair = getPair.getPair(sign * val)
+    d, p = pair.get("-" if sign == -1 else "+")
+    return ">" * d + p + "<" * d

@@ -5,5 +5,5 @@ def auto(src: str) -> str:
         oldsrc = src.replace("<>", "")
         oldsrc = oldsrc.replace("><", "")
         src = oldsrc
-    print("optimized: ", len(_src)-len(src), "b")
+    print("optimized: ", len(_src) - len(src), "b")
     return src

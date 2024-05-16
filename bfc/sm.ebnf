@@ -1,0 +1,29 @@
+%import common.NUMBER
+int: NUMBER
+
+?offset : ("+" int) -> p_offset
+        | ("-" int) -> n_offset
+
+%import common.CNAME
+ident: CNAME
+
+%import common.WS
+%ignore WS
+
+%import common.SH_COMMENT
+%ignore SH_COMMENT
+
+stmt_set : "set" int
+stmt_move: "move" offset
+stmt_add : "add"
+stmt_label : ":" ident
+?stmt_: stmt_set
+      | stmt_add
+      | stmt_move
+      | stmt_label
+_stmt: stmt_ ";"
+
+_line: _stmt
+     | "\n"
+
+program: (_line "\n"*)* "\n"?
