@@ -13,14 +13,19 @@ ident: CNAME
 %import common.SH_COMMENT
 %ignore SH_COMMENT
 
-stmt_set : "set" int
+stmt_add : "add" int
+
+stmt_zero: "zero"
+
 stmt_move: "move" offset
-stmt_add : "add"
-stmt_label : ":" ident
-?stmt_: stmt_set
-      | stmt_add
+
+%import common.ESCAPED_STRING
+stmt_raw: "raw" ESCAPED_STRING
+
+?stmt_: stmt_add
+      | stmt_zero
       | stmt_move
-      | stmt_label
+      | stmt_raw
 _stmt: stmt_ ";"
 
 _line: _stmt
