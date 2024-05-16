@@ -2,8 +2,10 @@
   "saveAndRun": {
     "commands": [
       {
-        "cmd": "python3 -m s2bf 'Hello, World! I\\'m syoch'"
+        "cmd": "python3 -m s2bf 'Hello, World! Im syoch'"
       }
     ]
-  }
+  },
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.typeCheckingMode": "basic"
 }
