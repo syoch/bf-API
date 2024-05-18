@@ -1,0 +1,9 @@
+
+other: /[^+-<>[\]]+/
+
+!inst: /[+-<>]+/
+loop: "[" _expr* "]"
+
+_expr: inst | loop | other
+
+start: _expr*
