@@ -1,9 +1,14 @@
-def auto(src: str) -> str:
-    _src = src
+def _auto(src: str) -> str:
     oldsrc = ""
     while src != oldsrc:
-        oldsrc = src.replace("<>", "")
-        oldsrc = oldsrc.replace("><", "")
+        oldsrc = src.replace("<>", "").replace("><", "")
         src = oldsrc
-    print("optimized: ", len(_src) - len(src), "b")
+    return src
+
+
+def auto(src: str) -> str:
+    oldsrc = ""
+    while src != oldsrc:
+        oldsrc = src
+        src = _auto(src)
     return src

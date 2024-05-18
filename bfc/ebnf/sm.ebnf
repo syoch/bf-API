@@ -1,0 +1,77 @@
+%import common.NUMBER
+int: NUMBER
+
+?offset : ("+" int) -> p_offset
+        | ("-" int) -> n_offset
+
+%import common.CNAME
+_ident: CNAME
+
+%import common.ESCAPED_STRING
+
+%import common.WS
+%ignore WS
+
+%import common.SH_COMMENT
+%ignore SH_COMMENT
+
+!cell_member: "c/f" | "c/t" | "c/i" | "c/v" | "c/w0" | "c/w1"
+?cell_label_run_in: cell_member
+?cell_label_loop: cell_member "-l"
+?cell_label_if_then: cell_member "-t"
+
+?tape_ref : (offset) -> tape_ref_offset
+          | (cell_member) -> tape_ref_label
+
+stmt_code_emit : "code.emit" ESCAPED_STRING
+?stmt_code: stmt_code_emit
+
+stmt_tape_move: "tape.move" tape_ref
+stmt_tape_zero: "tape.zero"
+stmt_tape_add: "tape.add" int
+stmt_tape_sub: "tape.sub" int
+stmt_tape_addto: "tape.addto" offset+
+stmt_tape_copy: "tape.copy" tape_ref+ "using" tape_ref
+?stmt_tape: stmt_tape_move
+          | stmt_tape_zero
+          | stmt_tape_add
+          | stmt_tape_sub
+          | stmt_tape_addto
+          | stmt_tape_copy
+
+stmt_tape_prefix_run_in: cell_label_run_in ":" stmt
+stmt_tape_prefix_loop: cell_label_loop ":" stmt
+stmt_tape_prefix_if_then: cell_label_if_then ":" stmt
+
+?stmt_tape_prefix: stmt_tape_prefix_run_in
+                 | stmt_tape_prefix_loop
+                 | stmt_tape_prefix_if_then
+
+stmt_cell_new: "cell.new" "as" _ident
+stmt_cell_move: "cell.move" _ident
+stmt_cell_type: "cell.type" int
+stmt_cell_value: "cell.value" int
+?stmt_cell: stmt_cell_new
+          | stmt_cell_move
+          | stmt_cell_type
+          | stmt_cell_value
+
+
+
+stmt_block: "{" stmt* "}"
+
+stmt_blank:
+
+
+?stmt: (stmt_code
+     | stmt_tape
+     | stmt_tape_prefix
+     | stmt_cell
+     | stmt_block
+     | stmt_blank) ";" ?
+
+
+_line: stmt
+     | "\n"
+
+start: (_line "\n"*)* "\n"?
