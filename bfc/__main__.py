@@ -221,8 +221,7 @@ class TapeCopy(Stmt):
             ]
         ).bf_code(pointer)
         ret += TapePrefixRunin(self.trash_offset, TapeAddTo([base])).bf_code(pointer)
-
-        pointer.move_to(previous_pointer)
+        ret += pointer.move_to(previous_pointer)
 
         return ret
 
@@ -264,6 +263,7 @@ class TapePrefixIfThen(TapePrefix):
         code = self.offset.bf_code(pointer)
         code += "[[-]"
         code += self.code.bf_code(pointer)
+        code += self.offset.bf_code(pointer)
         code += "]"
 
         return code
@@ -298,7 +298,6 @@ class CellMove(Stmt):
         current_index = pointer.cell_offset()
 
         search_direction = 1 if index > current_index else -1
-        search_direction_rev = -1 if index > current_index else 1
 
         # Call on top, moved to top, update work1
         CHECK = [
@@ -320,22 +319,21 @@ class CellMove(Stmt):
 
         code = ""
 
-        code += CodeEmit("\nMove start\n").bf_code(pointer)
         code += CodeBlock(CHECK).bf_code(pointer)
 
-        code += CodeEmit("\nLoop!\n").bf_code(pointer)
         code += TapePrefixLoop(
             TapeRefLabel("c/f"),
             CodeBlock(
                 [
-                    CodeEmit("\nmove\n"),
                     TapeMove(TapeRefOffset(search_direction * CELL_SIZE)),
-                    CodeEmit("\ncheck\n"),
                     *CHECK,
                 ]
             ),
         ).bf_code(pointer)
-        code += CodeEmit("\nMove end\n").bf_code(pointer)
+
+        code += TapePrefixRunin(TapeRefLabel("c/f"), TapeAdd(1)).bf_code(pointer)
+
+        pointer.move((index - current_index) * CELL_SIZE)
 
         return code
 
@@ -429,6 +427,9 @@ class StackMachine(Transformer):
     def stmt_cell_move(self, tree):
         return CellMove(tree[0])
 
+    def stmt_cell_type(self, tree):
+        return CellSetType(tree[0])
+
 
 def main():
     BASE_DIR = Path(__file__).resolve().parent
@@ -441,13 +442,10 @@ def main():
     with open(TEST_DIR / "a.bfc-sm") as f:
         src = f.read()
 
-    tree = sm_parser.parse(src)
-    print(tree.pretty())
+    sm_tree = sm_parser.parse(src)
+    stack_ast = StackMachine().transform(sm_tree)
 
-    bf_code = StackMachine().transform(tree)
-    print(bf_code)
-
-    bf_code = bf_code.bf_code(Context())
+    bf_code = stack_ast.bf_code(Context())
 
     optimized = optimize(bf_code)
 

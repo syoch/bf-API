@@ -22,9 +22,13 @@ class Runtime:
 
     def value_increment(self):
         self.memory[self.pointer] += 1
+        if self.memory[self.pointer] > 255:
+            self.memory[self.pointer] = 0
 
     def value_decrement(self):
         self.memory[self.pointer] -= 1
+        if self.memory[self.pointer] < 0:
+            self.memory[self.pointer] = 255
 
     def value_output(self):
         print(chr(self.memory[self.pointer]), end="")
@@ -145,6 +149,7 @@ class App:
 
     def reset(self):
         self.runtime = Runtime()
+        self.memory_viewer = MemoryViewer(self.runtime)
 
     def process(self, code):
         try:
@@ -176,6 +181,7 @@ def interactive():
             app.show_memory()
         else:
             app.process(code)
+        app.show_memory()
 
 
 def run(filename: str):

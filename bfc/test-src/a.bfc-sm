@@ -1,6 +1,7 @@
 cell.new as a;
 cell.new as b;
 
-
-c/f: code.emit "\n=====\n";
-cell.move a;
+cell.move a; cell.type 2;
+cell.move b; cell.type 1;
+code.emit "\n";
+cell.move a; cell.type 3;
