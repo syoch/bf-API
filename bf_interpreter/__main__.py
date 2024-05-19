@@ -171,7 +171,10 @@ def interactive():
     app = App()
 
     while True:
-        code = input(">>> ").strip()
+        try:
+            code = input(">>> ").strip()
+        except EOFError:
+            break
 
         if code == ".exit":
             break
